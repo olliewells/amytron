@@ -7,14 +7,14 @@
 
 // COLOURS
 
-// $body-font-colour: ;
-// $body-highlight-colour: ;
-$body-highlight-colour-two: #000000;
+$body-font-colour: #000000;
+$body-highlight-colour: #ff0084;
+$body-highlight-colour-two: #ff0084;
 
-// $body-bg: ;
-$light-bg: #eeeeee;
-// $lighter-bg: ;
-// $lightest-bg: ;
+$body-bg: #ffffff;
+$light-bg: #989898;
+$lighter-bg: #aaaaaa;
+$lightest-bg: #eeeeee;
 $dark-bg: #454545;
 $darker-bg: #656565 ;
 $darkest-bg: #858585;
@@ -24,15 +24,12 @@ $border-colour: $body-highlight-colour-two;
 
 // FONTS
 
-// $body-font: ;
-// $title-font: ;
-// $link-colour: ;
+$body-font: Arial, "Helvetica Neue", Helvetica, sans-serif;
+$title-font: Arial, "Helvetica Neue", Helvetica, sans-serif;
+$link-colour: $body-highlight-colour;
 
-// $base-font-size: ;
-// $base-line-height: ;
-
-
-// TODO: Ensure number of classes which need to be removed from prototype is as few as poss
+$base-font-size: 14px;
+$base-line-height: 24px;
 
 
 // ELEMENTS
@@ -71,14 +68,13 @@ $border-colour: $body-highlight-colour-two;
 html, body{
  font-size: $base-font-size;}
 
-//body{
- //font-size: $base-font-size;
- //line-height: $base-line-height;
- //color: $base-font-colour;
- //font-family: $body-font-family;
- //font-weight: $body-font-weight;
- //font-style: $body-font-style;
- //background: $body-bg;}
+body{
+ font-size: $body-font-colour;
+ line-height: $base-line-height;
+ color: $body-font-colour;
+ font-family: $body-font;
+ font-weight: normal;
+ background: $body-bg;}
 
 p{
  font-size: $base-font-size - 2px;} // 14px

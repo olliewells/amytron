@@ -169,7 +169,7 @@ img, object, embed {
   box-sizing: border-box; }
 
 .box--border {
-  border: 1px solid black; }
+  border: 1px solid #ff0084; }
 
 .dark {
   background: #454545; }
@@ -181,13 +181,21 @@ img, object, embed {
   background: #858585; }
 
 .light {
-  background: #eeeeee; }
+  background: #989898; }
 
 html, body {
-  font-size: 16px; }
+  font-size: 14px; }
+
+body {
+  font-size: black;
+  line-height: 24px;
+  color: black;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: normal;
+  background: white; }
 
 p {
-  font-size: 14px; }
+  font-size: 12px; }
 
 h1, h2, h3, h4, h5, h6, hgroup,
 ul, ol, dd,
