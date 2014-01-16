@@ -1,0 +1,29 @@
+// –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+// STRUCTURE
+// _structure.scss v1 | ~ github.com/amytron | ~ amytron.com | @amytron
+
+// VERTICAL RHYTHM
+// MEDIA OBJECT
+
+// –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// VERTICAL RHYTHM
+// ~ csswizardry.com/2012/06/single-direction-margin-declarations/
+
+h1,h2,h3,h4,h5,h6,hgroup,
+ul,ol,dd,
+p,figure,
+pre,table,fieldset,hr{
+ margin-bottom: $base-line-height;
+}
+
+// MEDIA OBJECT
+
+// ~ stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+
+.media {margin:10px;}
+.media, .bd {overflow:hidden; _overflow:visible; zoom:1;}
+.media .img {float:left; margin-right: 10px;}
+.media .img img{display:block;}
+.media .imgExt{float:right; margin-left: 10px;}
+.media p{margin-bottom: $small-space;}

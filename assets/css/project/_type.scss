@@ -1,0 +1,43 @@
+// –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+// TYPE
+// type.scss v1 | ~ github.com/amytron | ~ amytron.com | @amytron
+
+// DEFAULTS
+// HELPERS
+// TITLES
+
+// –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// DEFAULTS
+
+$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$body-font-weight: normal !default;
+$body-font-style: normal !default;
+$font-smoothing: antialiased !default;
+
+// HELPERS
+
+.smooth{
+ -webkit-font-smoothing: $font-smoothing;}
+
+// TITLES
+
+h1{
+ font-size: floor( modular-scale($base-font-size, 4, $major-third) );
+ margin-bottom: $base-space;}
+
+h2{
+ font-size: floor( modular-scale($base-font-size, 3, $major-third) );
+ margin-bottom: $base-space;}
+
+h3{
+ font-size: floor( modular-scale($base-font-size, 2, $major-third) );
+ margin-bottom: $base-space;}
+
+h4{
+ font-size: floor( modular-scale($base-font-size, 1, $major-third) );
+ margin-bottom: $small-space;}
+
+h5, h6{
+ font-size: $base-font-size;
+ margin-bottom: $small-space;}

@@ -1,0 +1,110 @@
+
+// ----------------------------------------------------------------------------------- //
+
+// AMYTRON FRONT-END CODE LIBRARY
+// app.scss v1 | ~ github.com/amytron | ~ amytron.com | @amytron
+
+// COLOURS
+// FONTS
+// ELEMENTS
+// STYLES
+// GLOBAL
+
+// ------------------------------------------------------------------------------------ //
+
+// COLOURS
+
+// $body-font-colour: ;
+// $body-highlight-colour: ;
+$body-highlight-colour-two: #000000;
+
+// $body-bg: ;
+$light-bg: #eeeeee;
+// $lighter-bg: ;
+// $lightest-bg: ;
+$dark-bg: #454545;
+$darker-bg: #656565 ;
+$darkest-bg: #858585;
+
+$border-colour: $body-highlight-colour-two;
+
+
+// FONTS
+
+// $body-font: ;
+// $title-font: ;
+// $link-colour: ;
+
+// $base-font-size: ;
+// $base-line-height: ;
+
+
+// TODO: Ensure number of classes which need to be removed from prototype is as few as poss
+
+
+// ELEMENTS
+
+.box--padded{
+ padding: 20px;
+ @include box-sizing(border-box);
+}
+
+.box--border{
+ border: 1px solid $border-colour;}
+ 
+
+// STYLES
+
+.dark{
+ background: $dark-bg;} 
+
+.darker{
+ background: $darker-bg;}
+
+.darkest{
+ background: $darkest-bg;}
+
+.light{
+ background: $light-bg;}
+
+.lighter{}
+
+.lightest{}
+
+
+// GLOBAL
+
+
+html, body{
+ font-size: $base-font-size;}
+
+//body{
+ //font-size: $base-font-size;
+ //line-height: $base-line-height;
+ //color: $base-font-colour;
+ //font-family: $body-font-family;
+ //font-weight: $body-font-weight;
+ //font-style: $body-font-style;
+ //background: $body-bg;}
+
+p{
+ font-size: $base-font-size - 2px;} // 14px
+
+// LINKS
+
+//a{
+ //color: $normal;
+ //text-decoration: none;}
+
+//a:hover{
+ //color: $hover;
+ //text-decoration: underline;}
+
+//a:active{
+ //color: $active;}
+
+//a:focus{
+ //color: $focus;}
+
+//a:visited{
+ //color: $visited;}

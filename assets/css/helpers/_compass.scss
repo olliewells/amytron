@@ -1,0 +1,246 @@
+// –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+// COMPASS MIXINS
+// _compass.scss v1 | ~ compass-style.org
+
+// CROSS BROWSER SUPPORT
+// CSS3 DEPENDENCY - SHARED CSS3 UTILITIES
+// BORDER RADIUS
+// BOX SIZING
+// FONT FACE
+// BOX SHADOW
+// INLINE BLOCK
+// OPACITY
+
+// –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// CROSS BROWSER SUPPORT
+
+// ~ github.com/chriseppstein/compass/blob/stable/frameworks/compass/stylesheets/compass/_support.scss
+
+// Usually compass hacks apply to both ie6 & 7 -- set this to false to disable support for both.
+$legacy-support-for-ie: true !default;
+
+// Setting this to false will result in smaller output, but no support for ie6 hacks
+$legacy-support-for-ie6: $legacy-support-for-ie !default;
+
+// Setting this to false will result in smaller output, but no support for ie7 hacks
+$legacy-support-for-ie7: $legacy-support-for-ie !default;
+
+// Setting this to false will result in smaller output, but no support for legacy ie8 hacks
+$legacy-support-for-ie8: $legacy-support-for-ie !default;
+
+// @private
+// The user can simply set $legacy-support-for-ie and 6, 7, and 8 will be set accordingly,
+// But in case the user set each of those explicitly, we need to sync the value of
+// this combined variable.
+$legacy-support-for-ie: $legacy-support-for-ie6 or $legacy-support-for-ie7 or $legacy-support-for-ie8;
+
+// Whether to output legacy support for mozilla.
+// Usually this means hacks to support Firefox 3.6 or earlier.
+$legacy-support-for-mozilla: true;
+
+// Support for mozilla in experimental css3 properties (-moz).
+$experimental-support-for-mozilla      : true !default;
+// Support for webkit in experimental css3 properties (-webkit).
+$experimental-support-for-webkit       : true !default;
+// Support for webkit's original (non-standard) gradient syntax.
+$support-for-original-webkit-gradients : true !default;
+// Support for opera in experimental css3 properties (-o).
+$experimental-support-for-opera        : true !default;
+// Support for microsoft in experimental css3 properties (-ms).
+$experimental-support-for-microsoft    : true !default;
+// Support for khtml in experimental css3 properties (-khtml).
+$experimental-support-for-khtml        : false !default;
+// Support for svg in experimental css3 properties.
+// Setting this to true might add significant size to your
+// generated stylesheets.
+$experimental-support-for-svg          : false !default;
+// Support for CSS PIE in experimental css3 properties (-pie).
+$experimental-support-for-pie          : false !default;
+
+// SHARED CSS3 UTILITIES
+
+// ~ compass-style.org/reference/compass/css3/shared
+
+// This mixin provides basic support for CSS3 properties and
+// their corresponding experimental CSS2 properties when
+// the implementations are identical except for the property
+// prefix.
+
+@mixin experimental($property, $value,
+  $moz      : $experimental-support-for-mozilla,
+  $webkit   : $experimental-support-for-webkit,
+  $o        : $experimental-support-for-opera,
+  $ms       : $experimental-support-for-microsoft,
+  $khtml    : $experimental-support-for-khtml,
+  $official : true
+) {
+  @if $webkit  and $experimental-support-for-webkit    { -webkit-#{$property} : $value; }
+  @if $khtml   and $experimental-support-for-khtml     {  -khtml-#{$property} : $value; }
+  @if $moz     and $experimental-support-for-mozilla   {    -moz-#{$property} : $value; }
+  @if $ms      and $experimental-support-for-microsoft {     -ms-#{$property} : $value; }
+  @if $o       and $experimental-support-for-opera     {      -o-#{$property} : $value; }
+  @if $official                                        {         #{$property} : $value; }
+}
+
+// Same as experimental(), but for cases when the property is the same and the value is vendorized
+@mixin experimental-value($property, $value,
+  $moz      : $experimental-support-for-mozilla,
+  $webkit   : $experimental-support-for-webkit,
+  $o        : $experimental-support-for-opera,
+  $ms       : $experimental-support-for-microsoft,
+  $khtml    : $experimental-support-for-khtml,
+  $official : true
+) {
+  @if $webkit  and $experimental-support-for-webkit    { #{$property} : -webkit-#{$value}; }
+  @if $khtml   and $experimental-support-for-khtml     { #{$property} :  -khtml-#{$value}; }
+  @if $moz     and $experimental-support-for-mozilla   { #{$property} :    -moz-#{$value}; }
+  @if $ms      and $experimental-support-for-microsoft { #{$property} :     -ms-#{$value}; }
+  @if $o       and $experimental-support-for-opera     { #{$property} :      -o-#{$value}; }
+  @if $official                                        { #{$property} :         #{$value}; }
+}
+
+// BORDER RADIUS
+
+// ~ compass-style.org/reference/compass/css3/border_radius
+
+// border-radius($radius, $vertical-radius)
+
+@mixin border-radius($radius: $default-border-radius, $vertical-radius: false) {
+  @if $vertical-radius {
+    // Webkit doesn't understand the official shorthand syntax for specifying
+    // a vertical radius unless so in case there's several we only take the first.
+    @include experimental(border-radius, first-value-of($radius) first-value-of($vertical-radius), not -moz, -webkit, not -o, not -ms, not -khtml, not official);
+    @include experimental("border-radius", $radius unquote("/") $vertical-radius, -moz, not -webkit, not -o, not -ms, -khtml, official);
+  }
+  @else {
+    @include experimental(border-radius, $radius);
+  }
+}
+
+// BOX SIZING
+
+// ~ compass-style.org/reference/compass/css3/box_sizing
+
+// box-sizing($bs)
+
+@mixin box-sizing($bs) {
+  $bs: unquote($bs);
+  @include experimental(box-sizing, $bs, -moz, -webkit, not -o, not -ms, not -khtml, official);
+}
+
+// FONT FACE
+
+// ~ compass-style.org/reference/compass/css3/font_face/
+
+// font-face($name, $font-files, $eot, $weight, $style)
+
+// Cross-browser support for @font-face. Supports IE, Gecko, Webkit, Opera.
+//
+// * $name is required, arbitrary, and what you will use in font stacks.
+// * $font-files is required using font-files('relative/location', 'format').
+//   for best results use this order: woff, opentype/truetype, svg
+// * $eot is required by IE, and is a relative location of the eot file.
+// * $weight shows if the font is bold, defaults to normal
+// * $style defaults to normal, might be also italic
+// * For android 2.2 Compatiblity, please ensure that your web page has
+//   a meta viewport tag.
+// * To support iOS < 4.2, an SVG file must be provided
+//
+// If you need to generate other formats check out the Font Squirrel
+// [font generator](http://www.fontsquirrel.com/fontface/generator)
+//
+
+// In order to refer to a specific style of the font in your stylesheets as
+// e.g. "font-style: italic;",  you may add a couple of @font-face includes
+// containing the respective font files for each style and specying
+// respective the $style parameter.
+
+// Order of the includes matters, and it is: normal, bold, italic, bold+italic.
+
+@mixin font-face(
+  $name,
+  $font-files,
+  $eot: false,
+  $weight: false,
+  $style: false
+) {
+  $iefont: unquote("#{$eot}?#iefix");
+  @font-face {
+    font-family: quote($name);
+    @if $eot {
+      src: font-url($eot);
+      $font-files: font-url($iefont) unquote("format('embedded-opentype')"), $font-files;
+    }
+    src: $font-files;
+    @if $weight {
+      font-weight: $weight;
+    }
+    @if $style {
+      font-style: $style;
+    }
+  }
+}
+
+// BOX SHADOW
+
+// ~ compass-style.org/reference/compass/css3/box_shadow
+
+// box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+
+@mixin box-shadow($shadow-1: default, $shadow-2: false, $shadow-3: false, $shadow-4: false, $shadow-5: false, $shadow-6: false, $shadow-7: false, $shadow-8: false, $shadow-9: false, $shadow-10: false) {
+  @if $shadow-1 == default {
+    $shadow-1: -compass-space-list(compact(if($default-box-shadow-inset, inset, false), $default-box-shadow-h-offset, $default-box-shadow-v-offset, $default-box-shadow-blur, $default-box-shadow-spread, $default-box-shadow-color));
+  }
+  $shadow: compact($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10);
+  @include experimental(box-shadow, $shadow, -moz, -webkit, not -o, not -ms, not -khtml, official);
+}
+
+// INLINE BLOCK
+
+// ~ compass-style.org/reference/compass/css3/inline_block
+
+// Set `$inline-block-alignment` to `none` or `false` to disable the output
+// of a vertical-align property in the inline-block mixin.
+// Or set it to a legal value for `vertical-align` to change the default.
+$inline-block-alignment: middle !default;
+
+// Provides a cross-browser method to implement `display: inline-block;`
+@mixin inline-block($alignment: $inline-block-alignment) {
+  @if $legacy-support-for-mozilla {
+    display: -moz-inline-stack;
+  }
+  display: inline-block;
+  @if $alignment and $alignment != none {
+    vertical-align: $alignment;
+  }
+  @if $legacy-support-for-ie {
+    *vertical-align: auto;
+    zoom: 1;
+    *display: inline;
+  }
+}
+
+// OPACITY
+
+// ~ compass-style.org/reference/compass/css3/opacity/
+
+// opacity($opacity)
+
+// Provides cross-browser CSS opacity. Takes a number between 0 and 1 as the argument, e.g. 0.5 for 50% opacity.
+//
+//     @param $opacity
+//         A number between 0 and 1, where 0 is transparent and 1 is opaque.
+
+@mixin opacity($opacity) {
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 or $legacy-support-for-ie8 {
+    filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+  }
+  opacity: $opacity;
+}
+
+// Make an element completely transparent.
+@mixin transparent { @include opacity(0); }
+
+// Make an element completely opaque.
+@mixin opaque { @include opacity(1); }

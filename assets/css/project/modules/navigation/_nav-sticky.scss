@@ -1,0 +1,22 @@
+// –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+// NAV STICKY
+// _nav.sticky.scss v1 | ~ github.com/amytron | ~ amytron.com | @amytron
+
+// SIMPLE STICKY CLASS
+
+// –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// SIMPLE STICKY CLASS
+
+// For first element on page
+
+$sticky-nav-height: 80px;
+
+.sticky{
+ height: $sticky-nav-height;
+ position: fixed;
+ z-index: 9999;
+ top: 0px;}
+
+.sticky--clear{
+ margin-top: $sticky-nav-height;}
