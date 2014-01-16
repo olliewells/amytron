@@ -17,7 +17,7 @@
 
 // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 // AMYTRON FRONT-END CODE LIBRARY
-// app.scss v1 | ~ github.com/amytron | ~ amytron.com | @amytron
+// app.scss v1 | ~ github.com/amyamytron | ~ amytron.com | @amytron
 
 // HELPERS
 // THEME
@@ -47,13 +47,13 @@
 
 // THEME
 
-// TODO: Make theme a folder, so titles etc can be imported seperately in production
-
 @import "project/theme/_prototype.scss";
 // @import "project/theme/_theme.scss";
 
 
 // STRUCTURE
+
+// TODO: Add Bourbon Neat grid
 
 @import "project/_structure.scss";
 @import "project/_grid.scss"; // ~ foundation.zurb.com/docs
@@ -61,14 +61,9 @@
 
 // MODULES
 
-// TODO: Organise these into the sections below
+// Interaction
 
-@import "project/modules/_nav.scss";
-@import "project/modules/_search.scss";
-@import "project/modules/_social.scss";
-@import "project/modules/_buttons.scss";
-@import "project/modules/_landing-ctas.scss";
-@import "project/modules/_forms.scss";
+//@import "project/modules/interaction/_animation.scss"; Speak to Lloyd
 
 // Search
 
@@ -92,7 +87,7 @@
 // Page assets
 
 //@import "project/modules/page-assets/_alert.scss";
-//@import "project/modules/page-assets/_buttons.scss";
+@import "project/modules/page-assets/_buttons.scss";
 //@import "project/modules/page-assets/_blockquote.scss";
 //@import "project/modules/page-assets/_tooltips.scss";
 //@import "project/modules/page-assets/_testimonial.scss";
@@ -115,7 +110,7 @@
 // Data
 
 //@import "project/modules/data/_slider.scss";
-//@import "project/modules/data/_round-charts.scss";
+//@import "project/modules/data/_charts.scss";
 //@import "project/modules/data/_progress-bar.scss";
 //@import "project/modules/data/_progress-steps.scss";
 
@@ -140,5 +135,4 @@
 //@import "project/modules/social/_twitter.scss";
 //@import "project/modules/social/_flickr.scss";
 //@import "project/modules/social/_socialshare.scss";
- 
 
