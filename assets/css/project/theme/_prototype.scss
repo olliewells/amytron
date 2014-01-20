@@ -8,8 +8,8 @@
 // COLOURS
 
 $body-font-colour: #000000;
-$body-highlight-colour: #ff0084;
-$body-highlight-colour-two: #ff0084;
+$body-highlight-colour: #000000;
+$body-highlight-colour-two: #ffffff;
 
 $body-bg: #ffffff;
 $light-bg: #989898;
@@ -81,19 +81,25 @@ p{
 
 // LINKS
 
-//a{
- //color: $normal;
- //text-decoration: none;}
+$normal: $body-highlight-colour;
+$active: $body-highlight-colour;
+$hover: $body-highlight-colour;
+$focus: $body-highlight-colour;
+$visited: $body-highlight-colour;
 
-//a:hover{
- //color: $hover;
- //text-decoration: underline;}
+a{
+ color: $normal;
+ text-decoration: none;}
 
-//a:active{
- //color: $active;}
+a:hover{
+ color: $hover;
+ text-decoration: underline;}
 
-//a:focus{
- //color: $focus;}
+a:active{
+ color: $active;}
 
-//a:visited{
- //color: $visited;}
+a:focus{
+ color: $focus;}
+
+a:visited{
+ color: $visited;}

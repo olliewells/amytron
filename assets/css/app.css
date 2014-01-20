@@ -169,7 +169,7 @@ img, object, embed {
   box-sizing: border-box; }
 
 .box--border {
-  border: 1px solid #ff0084; }
+  border: 1px solid white; }
 
 .dark {
   background: #454545; }
@@ -196,6 +196,23 @@ body {
 
 p {
   font-size: 12px; }
+
+a {
+  color: black;
+  text-decoration: none; }
+
+a:hover {
+  color: black;
+  text-decoration: underline; }
+
+a:active {
+  color: black; }
+
+a:focus {
+  color: black; }
+
+a:visited {
+  color: black; }
 
 h1, h2, h3, h4, h5, h6, hgroup,
 ul, ol, dd,
